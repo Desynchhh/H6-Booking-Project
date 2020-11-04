@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <h1>Opret en konto</h1>
+        <hr>
+        <div class="row">
+            <div class="col-md-6">
+                <fieldset class="form-group">
+                    <legend>Bruger information</legend>
+                    {{ forms.u_form|crispy }}
+                </fieldset>
+            </div>
+            <div class="col-md-6">
+                <fieldset class="form-group">
+                <legend>Firma information</legend>
+                    {{ forms.o_form|crispy }}
+                </fieldset>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-outline-info">Registrer konto</button>
+        </div>
+        <div>
+            <small>Har du allerede en konto? <a href="{% url 'login' %}">Log ind her!</a></small>
+        </div>
+    </form>
+{% endblock content %}

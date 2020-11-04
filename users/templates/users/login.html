@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <h1>Log ind på din konto</h1>
+    <hr>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <fieldset class="form-group">
+                    {{ form|crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-outline-info">Log In</button>
+                </div>
+                <div>
+                    <small>Don't have an account yet? <a href="{% url 'register' %}">Create one here!</a></small>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock content %}
