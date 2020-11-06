@@ -14,11 +14,23 @@ def validate_is_phonenumber(num:int) -> bool:
 # Create your models here.
 class Organisation(models.Model):
     name = models.CharField(max_length=255)
-    address = models.CharField(max_length=255, )
     phone = models.IntegerField(validators=[validate_is_phonenumber])
     slug = models.SlugField(
         max_length=255,
         blank=True,
+    )
+    address = models.CharField(
+        max_length=255,
+    )
+    website = models.CharField(
+        max_length=255,
+        default=None,
+        null=True
+    )
+    image = models.ImageField(
+        default=None,
+        upload_to='organisations/',
+        null=True
     )
 
     def __str__(self):

@@ -1,6 +1,6 @@
 [
     {
-        "model": "users.profile",
+        "model": "users.role",
         "pk": 1,
         "fields": {
             "name": "Superuser",
@@ -8,7 +8,7 @@
         }
     },
     {
-        "model": "users.profile",
+        "model": "users.role",
         "pk": 2,
         "fields": {
             "name": "Leader",
@@ -16,7 +16,7 @@
         }
     },
     {
-        "model": "users.profile",
+        "model": "users.role",
         "pk": 3,
         "fields": {
             "name": "Employee",

@@ -1,0 +1,43 @@
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    padding: 1.2em;
+}
+.employee-overview--header {
+    background-color: #eaeaea;
+    padding-left: 1%;
+    min-height: 10px;
+}
+
+
+.employee-overview--main {
+    background-color: #989898;
+}
+
+.employee-overview--table-header,
+.employee-overview--table-header th,
+.employee-overview--table-header tr {
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin: auto;
+}
+.employee-overview--table-header tr:nth-child(2n+2) {
+    background-color: #f00;
+}
+
+
+.employee-overview--table-header thead tr {
+    background-color: aqua;
+}
+
+.employee-overview--navigation {
+    display: flex;
+}
+
+.employee-overview--navigation h4 {
+    flex-grow: 1;
+}
+
+.employee-overview--navigation a {
+    height: 100%;
+    margin-left: 0.5em;
+}

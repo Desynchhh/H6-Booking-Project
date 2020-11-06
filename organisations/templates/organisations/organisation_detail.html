@@ -1,4 +1,63 @@
 {% extends 'base.html' %}
+
 {% block content %}
-<h1>{{ object.name }}</h1>
+    <h1>{{ object.name }}</h1>
+    <hr>
+    <!-- Organisation overview -->
+    <div class="row mb-5 ">
+        <div class="col-md-5 card">
+            <div class="">
+                <h4>{{ object.name }}</h4>
+                {% if object.website %}
+                    <p>Hjemmeside: <a href="{{ object.website }}">{{ object.website }}</a></p>
+                {% endif %}
+                {% if object.address %}
+                    <p>Adresse: {{ object.address }}</p>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-6 card">
+        
+        </div>
+    </div>
+    <!-- Schedule creator/editor -->
+    <!-- Schedule overview -->
+    <!-- Employee account creation -->
+    <!-- Employee overview -->
+    <div class="row">
+        <div class="col-md-10 mx-auto">
+            <div class="card">
+                <div class="employee-overview--navigation">
+                    <h4>Medarbejder oversigt</h4>
+                    <a href="#" class="btn btn-sm btn-info">Opret ny</a>
+                    <a href="#" class="btn btn-sm btn-danger">Slet</a>
+                </div>
+                <div class="" style="padding-top:16px;">
+                    <table class="employee-overview--table-header" style="width:100%;">
+                        <thead>
+                            <tr>
+                                <td>Fulde navn</td>
+                                <td>Brugernavn</td>
+                                <td>Rolle</td>
+                                <td>Optaget</td>
+                                <td>Oprettet</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for profile in object.profile_set.all %}
+                                <tr>
+                                    <td>{{ profile.full_name }}</td>
+                                    <td>{{ profile.user.username }}</td>
+                                    <td>{{ profile.role|default:"Ingen" }}</td>
+                                    <td>NYI</td>
+                                    <td>{{ profile.user.date_joined|date:"d-m-Y" }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock content %}

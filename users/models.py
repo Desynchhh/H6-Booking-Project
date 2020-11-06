@@ -3,7 +3,13 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+class RoleManager(models.Manager):
+    def get_all_roles(self):
+        return self.all()
+
 class Role(models.Model):
+    objects = RoleManager()
+
     name = models.CharField(max_length=255)
     display_name = models.CharField(max_length=255)
 
@@ -24,6 +30,14 @@ class Profile(models.Model):
         on_delete=models.SET_NULL,
         null=True
     )
+
+    @property
+    def full_name(self):
+        "Returns the person's full name."
+        return f'{self.user.first_name} {self.user.last_name}'
+
+    def get_all_roles(self):
+        return self.objects.all()
 
     def __str__(self):
         return f"{self.user.username}'s Profile"

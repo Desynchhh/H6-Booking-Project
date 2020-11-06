@@ -24,8 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('booking.urls')),
     path('organisation/', include('organisations.urls')),
-    path('register/', user_views.register, name='register'),
-    # path('register/', user_views.RegisterTemplateView.as_view(), name='register'),
+    # path('register/', user_views.register, name='register'),
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='booking/temp_home.html'), name='logout'),
 ]
