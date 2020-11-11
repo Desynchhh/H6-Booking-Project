@@ -7,22 +7,40 @@
     <div class="row mb-5 ">
         <div class="col-md-5 card">
             <div class="">
-                <h4>{{ object.name }}</h4>
+                <div class="">
+                    <h4>{{ object.name }}</h4>
+                    {% if user.profile.role.name == 'Leader' %}
+                        <a href="{% url 'organisations:opening-hours' object.pk object.slug %}" class="btn btn-sm btn-primary">Indstillinger</a>
+                    {% endif %}
+                </div>
                 {% if object.website %}
                     <p>Hjemmeside: <a href="{{ object.website }}">{{ object.website }}</a></p>
                 {% endif %}
                 {% if object.address %}
                     <p>Adresse: {{ object.address }}</p>
                 {% endif %}
+                <hr>
+                <div class="organisation-overview--opening-hours">
+                    <h5>Åbningstider</h5>
+                    <p>Mandag: <span>Lukket</span></p>
+                    <p>Tirsdag: <span>Lukket</span></p>
+                    <p>Onsdag: <span>Lukket</span></p>
+                    <p>Torsdag: <span>Lukket</span></p>
+                    <p>Fredag: <span>Lukket</span></p>
+                    <p>Lørdag: <span>Lukket</span></p>
+                    <p>Søndag: <span>Lukket</span></p>
+                </div>
             </div>
         </div>
         <div class="col-md-1"></div>
         <div class="col-md-6 card">
-        
+            <h4>Indstillinger</h4>
         </div>
     </div>
     <!-- Schedule creator/editor -->
     <!-- Schedule overview -->
+
+
     <!-- Employee account creation -->
     <!-- Employee overview -->
     <div class="row">
@@ -30,8 +48,7 @@
             <div class="card">
                 <div class="employee-overview--navigation">
                     <h4>Medarbejder oversigt</h4>
-                    <a href="#" class="btn btn-sm btn-info">Opret ny</a>
-                    <a href="#" class="btn btn-sm btn-danger">Slet</a>
+                    <a href="{% url 'register' object.pk object.slug %}" class="btn btn-sm btn-primary">Opret ny</a>
                 </div>
                 <div class="" style="padding-top:16px;">
                     <table class="employee-overview--table-header" style="width:100%;">
@@ -42,6 +59,9 @@
                                 <td>Rolle</td>
                                 <td>Optaget</td>
                                 <td>Oprettet</td>
+                                {% if user.profile.role.name == 'Leader' %}
+                                    <td>Værktøjer</td>
+                                {% endif %}
                             </tr>
                         </thead>
                         <tbody>
@@ -52,6 +72,12 @@
                                     <td>{{ profile.role|default:"Ingen" }}</td>
                                     <td>NYI</td>
                                     <td>{{ profile.user.date_joined|date:"d-m-Y" }}</td>
+                                    {% if user.profile.role.name == 'Leader' %}
+                                        <td>
+                                            <a href="#" class="btn btn-sm btn-info">Rediger</a>
+                                            <a href="#" class="btn btn-sm btn-danger">Slet</a>
+                                        </td>
+                                    {% endif %}
                                 </tr>
                             {% endfor %}
                         </tbody>

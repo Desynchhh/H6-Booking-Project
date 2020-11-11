@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <h1>Opret en konto</h1>
+        <hr>
+        <fieldset class="form-group">
+        <legend>Bruger information</legend>
+            {{ form|crispy }}
+        </fieldset>
+        <div class="form-group">
+            <button type="submit" class="btn btn-outline-info">Registrer konto</button>
+        </div>
+    </form>
+{% endblock content %}

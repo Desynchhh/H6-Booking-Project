@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <h1>Åbningstider</h1>
+    <hr>
+    <div class="row">
+        <div class="col-md-7 card">
+            <h4>Opret åbningstid</h4>
+            <hr>
+            <form method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    {{ form.errors }}
+                    {{ form.non_field_errors }}
+                    <div class="row">
+                        <div class="col">
+                            <label for="{{ form.day.id_for_label }}">Dag</label>
+                        </div>
+                        <div class="col">
+                            <label for="{{ form.time_open.id_for_label }}">Åbningstid</label>
+                        </div>
+                        <div class="col">
+                            <label for="{{ form.working_time.id_for_label }}">Lukketid</label>
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            {{ form.day }}
+                        </div>
+                        <div class="col">
+                            {{ form.time_open }}
+                        </div>
+                        <div class="col">
+                            {{ form.working_time }}
+                        </div>
+                        <div class="col-md-1">
+                            <input type="submit" class="btn btn-success btn-sm" value="+">
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+        <div class="col-md-4 offset-md-1 card">
+            <h4>Nuværende åbningstider</h4>
+            <hr>
+            {% for opening_hour in opening_hours %}
+                <ul>
+                    <li>
+                        {{ opening_hour.get_day_display }}: {{ opening_hour.time_open }} - {{ opening_hour.get_closing_hours }}
+                    </li>
+                </ul>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

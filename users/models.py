@@ -10,7 +10,7 @@ class RoleManager(models.Manager):
 class Role(models.Model):
     objects = RoleManager()
 
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
     display_name = models.CharField(max_length=255)
 
     def __str__(self):

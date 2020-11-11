@@ -1,3 +1,7 @@
+body {
+    background: #eaeaea;
+}
+
 .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     padding: 1.2em;
@@ -24,7 +28,6 @@
     background-color: #f00;
 }
 
-
 .employee-overview--table-header thead tr {
     background-color: aqua;
 }
@@ -40,4 +43,9 @@
 .employee-overview--navigation a {
     height: 100%;
     margin-left: 0.5em;
+}
+
+.three-quarters-width {
+    width: 33%;
+    margin: 0 1em;
 }
