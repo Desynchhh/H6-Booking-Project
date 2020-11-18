@@ -1,0 +1,10 @@
+<div class="opening-hours">
+    <h5>Åbningstider</h5>
+    {% include "organisations/includes/display_opening_hours.html" with day_name='Mandag' current_oh=opening_hours.MONDAY %}
+    {% include "organisations/includes/display_opening_hours.html" with day_name='Tirsdag' current_oh=opening_hours.TUESDAY %}
+    {% include "organisations/includes/display_opening_hours.html" with day_name='Onsdag' current_oh=opening_hours.WEDNESDAY %}
+    {% include "organisations/includes/display_opening_hours.html" with day_name='Torsdag' current_oh=opening_hours.THURSDAY %}
+    {% include "organisations/includes/display_opening_hours.html" with day_name='Fredag' current_oh=opening_hours.FRIDAY %}
+    {% include "organisations/includes/display_opening_hours.html" with day_name='Lørdag' current_oh=opening_hours.SATURDAY %}
+    {% include "organisations/includes/display_opening_hours.html" with day_name='Søndag' current_oh=opening_hours.SUNDAY %}
+</div>

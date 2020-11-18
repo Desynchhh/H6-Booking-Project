@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ object.name }} - Booking</h1>
+    <hr>
+    <div class="row">
+        <div class="col-md-12 card">
+            <div class="row">
+                <div class="col">
+                    <p>BESKRIVELSE</p>
+                    <hr>
+                    {% include "organisations/includes/opening_hours.html" %}
+                </div>
+                {% if object.image %}
+                    <div class="col-md-8">
+                        <img src="#" alt="Organisations bygning">
+                    </div>
+                {% endif %}
+            </div>
+        </div> 
+    </div>
+
+    <div class="row mt-4">
+        <div class="col card">
+            <h2>Book her!</h2>
+            <hr>
+            <table>
+                <tbody>
+                    {% for minute in table_minutes %}
+                        <tr>
+                            {% for hour in table_hours %}
+                                <td>{{ hour }}:{{ minute }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock content %}

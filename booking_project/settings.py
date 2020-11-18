@@ -132,5 +132,5 @@ MEDIA_URL = '/media/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-LOGIN_REDIRECT_URL = 'booking:temp-home'
+LOGIN_REDIRECT_URL = 'booking:organisation-list'
 LOGIN_URL = 'login'

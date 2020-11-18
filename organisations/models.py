@@ -48,7 +48,7 @@ class Organisation(models.Model):
         super().save(*args, **kwargs)
 
 
-class OpeningHours(models.Model):
+class OpeningHour(models.Model):
     class DayChoices(models.TextChoices):
         MONDAY = (0, 'Mandag')
         TUESDAY = (1, 'Tirsdag')
@@ -71,7 +71,14 @@ class OpeningHours(models.Model):
     def get_closing_hours(self):
         time_open_hours, time_open_minutes, *_ = str(self.time_open).split(':')
         time_open_delta = datetime.timedelta(hours=int(time_open_hours), minutes=int(time_open_minutes))
-        return str(time_open_delta + datetime.timedelta(minutes=int(self.working_time)))[:5]
+        closing_time = str(time_open_delta + datetime.timedelta(minutes=int(self.working_time)))
+        
+        if closing_time[1] == ':':
+            closing_time = "0" + closing_time
+        time_close_hours, time_close_minutes, *_ = closing_time.split(':')
+        temp_test = datetime.time(hour=int(time_close_hours), minute=int(time_close_minutes))
+        return temp_test
+        return closing_time[:5]
 
     def __str__(self):
         return f'{self.organisation.name} ({self.day}, {self.time_open}, {self.working_time})'

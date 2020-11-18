@@ -10,7 +10,7 @@
                 <div class="">
                     <h4>{{ object.name }}</h4>
                     {% if user.profile.role.name == 'Leader' %}
-                        <a href="{% url 'organisations:opening-hours' object.pk object.slug %}" class="btn btn-sm btn-primary">Indstillinger</a>
+                        <a href="{% url 'organisations:opening-hours-create' object.pk object.slug %}" class="btn btn-sm btn-primary">Indstillinger</a>
                     {% endif %}
                 </div>
                 {% if object.website %}
@@ -20,16 +20,7 @@
                     <p>Adresse: {{ object.address }}</p>
                 {% endif %}
                 <hr>
-                <div class="organisation-overview--opening-hours">
-                    <h5>Åbningstider</h5>
-                    <p>Mandag: <span>Lukket</span></p>
-                    <p>Tirsdag: <span>Lukket</span></p>
-                    <p>Onsdag: <span>Lukket</span></p>
-                    <p>Torsdag: <span>Lukket</span></p>
-                    <p>Fredag: <span>Lukket</span></p>
-                    <p>Lørdag: <span>Lukket</span></p>
-                    <p>Søndag: <span>Lukket</span></p>
-                </div>
+                {% include "organisations/includes/opening_hours.html" %}
             </div>
         </div>
         <div class="col-md-1"></div>

@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ValidationError
 from django.utils.translation import gettext as _
-from .models import Organisation, OpeningHours
+from .models import Organisation, OpeningHour
 
 
 class OrganisationRegisterForm(forms.ModelForm):
@@ -29,15 +29,28 @@ class OrganisationRegisterForm(forms.ModelForm):
 #     (6, 'Søndag'),
 # )
 
-class OpeningHoursCreateForm(forms.ModelForm):
-    day = forms.ChoiceField(choices=OpeningHours.DayChoices.choices)
+class OpeningHourCreateForm(forms.ModelForm):
+    day = forms.ChoiceField(choices=OpeningHour.DayChoices.choices)
     day.widget.attrs.update({'class': 'form-control'})
 
     class Meta:
-        model = OpeningHours
+        model = OpeningHour
         fields = ('day', 'time_open', 'working_time')
 
         widgets = {
             'time_open': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'eks. 08:15'}),
             'working_time': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'eks. 16:00' }),
+        }
+
+
+class OpeningHourDeleteForm(forms.ModelForm):
+    day = forms.ChoiceField(choices=OpeningHour.DayChoices.choices)
+    day.widget.attrs.update({'class': 'form-control'})
+
+    class Meta:
+        model = OpeningHour
+        fields = ('day', 'time_open')
+
+        widgets = {
+            'time_open': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'eks. 08:15'}),
         }

@@ -1,0 +1,14 @@
+<p>{{ day_name }}:
+    <span>
+        {% if current_oh|length > 0 %}
+            {% for oh in current_oh %}
+                {% if user.profile.role.name == 'Leader' %}
+                    <a href="{% url 'organisations:opening-hours-delete' view.kwargs.pk view.kwargs.slug oh.pk %}" style="color:red;">x</a>
+                {% endif %}
+                {{ oh.time_open }} - {{ oh.get_closing_hours}}{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        {% else %}
+            Lukket
+        {% endif %}
+    </span>
+</p>

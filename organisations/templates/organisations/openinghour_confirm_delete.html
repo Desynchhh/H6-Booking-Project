@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Slet åbningstid</h1>
+<hr>
+<div class="row card">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <h2>Er du sikker på du vil slette denne tid?</h2>
+            <p>{{ object.get_day_display }}, {{ object.time_open }} - {{ object.get_closing_hours }}</p>
+        </fieldset>
+        <div class="form-group">
+            <button type="submit" class="btn btn-danger">Ja, slet tid</button>
+            <a href="{% url 'organisations:opening-hours-create' object.organisation.id object.organisation.slug %}" class="btn btn-secondary">Nej, gå tilbage</a>
+        </div>
+    </form>
+</div>
+{% endblock content %}
