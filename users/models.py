@@ -36,8 +36,5 @@ class Profile(models.Model):
         "Returns the person's full name."
         return f'{self.user.first_name} {self.user.last_name}'
 
-    def get_all_roles(self):
-        return self.objects.all()
-
     def __str__(self):
         return f"{self.user.username}'s Profile"

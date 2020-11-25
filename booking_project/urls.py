@@ -26,7 +26,7 @@ urlpatterns = [
     path('<int:pk>/<str:slug>/user/register/', user_views.RegisterFormView.as_view(), name='register'),
     path('organisation/', include('organisations.urls')),
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(template_name='booking/temp_home.html'), name='logout'),
+    path('logout/', auth_views.LogoutView.as_view(template_name='users/login.html'), name='logout'),
 ]
 
 if settings.DEBUG:

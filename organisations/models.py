@@ -76,9 +76,7 @@ class OpeningHour(models.Model):
         if closing_time[1] == ':':
             closing_time = "0" + closing_time
         time_close_hours, time_close_minutes, *_ = closing_time.split(':')
-        temp_test = datetime.time(hour=int(time_close_hours), minute=int(time_close_minutes))
-        return temp_test
-        return closing_time[:5]
+        return datetime.time(hour=int(time_close_hours), minute=int(time_close_minutes))
 
     def __str__(self):
         return f'{self.organisation.name} ({self.day}, {self.time_open}, {self.working_time})'
